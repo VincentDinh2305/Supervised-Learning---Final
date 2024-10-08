@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Project</title>
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        #map {
+            height: 300px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-radio {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-submit {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter the values:</h2>
+        <form method="POST">
+            <label class="form-label" for="model">Select Model:</label>
+            <select class="form-radio" name="model" required>
+                <option value="svm">SVM</option>
+                <option value="decision_tree">Decision Tree</option>
+                <option value="random_forest" selected>Random Forest</option>
+                <option value="xgboost">XG Boost</option>
+                <option value="logistic_regression">Logistic Regression</option>
+            </select>
+            </br>
+            </br>
+
+            <div id="map"></div>
+
+            <span class="form-label">Select the location on the map:</span>
+
+            <label class="form-label">Latitude:</label>
+            <input class="form-input" type="text" id="latitude" name="latitude" required><br>
+
+            <label class="form-label">Longitude:</label>
+            <input class="form-input" type="text" id="longitude" name="longitude" required><br>
+
+            <label class="form-label">Year:</label>
+            <input class="form-input" type="number" name="year" required><br>
+
+            <label class="form-label">Transit Vehicle:</label>
+            <label class="form-radio"><input type="radio" name="trsn_city_veh" value="1" required> Yes</label>
+            <label class="form-radio"><input type="radio" name="trsn_city_veh" value="0" required> No</label><br>
+
+            <label class="form-label">Pedestrian:</label>
+            <label class="form-radio"><input type="radio" name="pedestrian" value="1" required> Yes</label>
+            <label class="form-radio"><input type="radio" name="pedestrian" value="0" required> No</label><br>
+
+            <label class="form-label">Traffic Control:</label>
+            <label class="form-radio"><input type="radio" name="traffctl" value="1" required> Yes</label>
+            <label class="form-radio"><input type="radio" name="traffctl" value="0" required> No</label><br>
+
+            <label class="form-label">Motorcycle:</label>
+            <label class="form-radio"><input type="radio" name="motorcycle" value="1" required> Yes</label>
+            <label class="form-radio"><input type="radio" name="motorcycle" value="0" required> No</label><br>
+
+            <label class="form-label">Automobile:</label>
+            <label class="form-radio"><input type="radio" name="automobile" value="1" required> Yes</label>
+            <label class="form-radio"><input type="radio" name="automobile" value="0" required> No</label><br>
+
+            <label class="form-label">Cyclist:</label>
+            <label class="form-radio"><input type="radio" name="cyclist" value="1" required> Yes</label>
+            <label class="form-radio"><input type="radio" name="cyclist" value="0" required> No</label><br>
+
+            <label class="form-label">Truck:</label>
+            <label class="form-radio"><input type="radio" name="truck" value="1" required> Yes</label>
+            <label class="form-radio"><input type="radio" name="truck" value="0" required> No</label><br>
+
+
+            <input class="form-submit" type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        var map = L.map('map').setView([43.651070, -79.347015], 12); // Toronto coordinates and zoom level
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var marker = L.marker([43.651070, -79.347015], { draggable: true }).addTo(map);
+
+        function onMapClick(e) {
+            marker.setLatLng(e.latlng);
+            document.getElementById('latitude').value = e.latlng.lat;
+            document.getElementById('longitude').value = e.latlng.lng;
+        }
+
+        map.on('click', onMapClick);
+    </script>
+
+</body>
+</html>
