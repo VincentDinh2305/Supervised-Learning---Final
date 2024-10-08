@@ -1,0 +1,104 @@
+Training XGBoost...
+Best parameters {'classifier__learning_rate': 0.1, 'classifier__max_depth': 5, 'classifier__n_estimators': 300}
+Best XGBoost Train Accuracy: 0.9170
+Best XGBoost Test Accuracy: 0.8738
+Confusion matrix:
+[[2860  263]
+ [ 196  319]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      0.92      0.93      3123
+           1       0.55      0.62      0.58       515
+
+    accuracy                           0.87      3638
+   macro avg       0.74      0.77      0.75      3638
+weighted avg       0.88      0.87      0.88      3638
+
+The cross val scores for training are: [0.87152181 0.87353952 0.87113402 0.86804124 0.8790378 ]
+The mean score of cross_val_scor for training is: 0.8726548782258551
+
+
+Training SVM...
+Best parameters {'classifier__C': 0.01, 'classifier__degree': 3, 'classifier__gamma': 'auto', 'classifier__kernel': 'poly'}
+Best SVM Train Accuracy: 0.7188
+Best SVM Test Accuracy: 0.7133
+Confusion matrix:
+[[2391  732]
+ [ 311  204]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.88      0.77      0.82      3123
+           1       0.22      0.40      0.28       515
+
+    accuracy                           0.71      3638
+   macro avg       0.55      0.58      0.55      3638
+weighted avg       0.79      0.71      0.74      3638
+
+The cross val scores for training are: [0.69735486 0.72817869 0.69140893 0.71202749 0.72783505]
+The mean score of cross_val_scor for training is: 0.7113610065387717
+
+
+Training Decision Tree...
+Best parameters {'classifier__criterion': 'gini', 'classifier__max_depth': 10, 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 2}
+Best Decision Tree Train Accuracy: 0.7427
+Best Decision Tree Test Accuracy: 0.7092
+Confusion matrix:
+[[2232  891]
+ [ 167  348]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.93      0.71      0.81      3123
+           1       0.28      0.68      0.40       515
+
+    accuracy                           0.71      3638
+   macro avg       0.61      0.70      0.60      3638
+weighted avg       0.84      0.71      0.75      3638
+
+The cross val scores for training are: [0.72071453 0.76872852 0.73848797 0.75910653 0.70103093]
+The mean score of cross_val_scor for training is: 0.7376136965958014
+
+
+Training Random Forest...
+Best parameters {'classifier__max_depth': 30, 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 2, 'classifier__n_estimators': 100}
+Best Random Forest Train Accuracy: 0.9986
+Best Random Forest Test Accuracy: 0.9753
+Confusion matrix:
+[[3081   42]
+ [  48  467]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.98      0.99      0.99      3123
+           1       0.92      0.91      0.91       515
+
+    accuracy                           0.98      3638
+   macro avg       0.95      0.95      0.95      3638
+weighted avg       0.98      0.98      0.98      3638
+
+The cross val scores for training are: [0.95121951 0.95395189 0.95670103 0.95876289 0.95257732]
+The mean score of cross_val_scor for training is: 0.9546425278685777
+
+
+Training Logistic Regression...
+Best parameters {'classifier__C': 0.01, 'classifier__max_iter': 100, 'classifier__penalty': 'l1', 'classifier__solver': 'saga'}
+Best Logistic Regression Train Accuracy: 0.6011
+Best Logistic Regression Test Accuracy: 0.5981
+Confusion matrix:
+[[1874 1249]
+ [ 213  302]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.90      0.60      0.72      3123
+           1       0.19      0.59      0.29       515
+
+    accuracy                           0.60      3638
+   macro avg       0.55      0.59      0.51      3638
+weighted avg       0.80      0.60      0.66      3638
+
+The cross val scores for training are: [0.60769495 0.60721649 0.58900344 0.60171821 0.58934708]
+The mean score of cross_val_scor for training is: 0.5989960347113272
+
